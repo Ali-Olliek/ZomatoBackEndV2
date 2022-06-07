@@ -28,13 +28,14 @@ class UsersController extends Controller {
             ["email", "=", "$email"],
             ["password", "=", "$password"]
             ])->get();
-        if ($user != null){
-            return response()->json([
-            "status"=>"success",
+        if ($user != "[]"){
+            $status = "User Found";
+        }else{
+            die ("User Not Found!");
+        }
+        return response()->json([
+            "status"=>$status,
             "user"=>$user
         ], 200);
-        }else{
-            echo ("User Not Found!");
-        }
     }
 }
