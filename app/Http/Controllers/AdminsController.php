@@ -10,11 +10,20 @@ use App\Models\review;
 class AdminsController extends Controller{
 
     public function addResto(Request $request){
-        $resto = new Restaurant;
-        $resto -> name = $request -> name;
-        $resto -> cuisine = $request -> cuisine;
-        $resto -> location = $request -> location;
-        $resto->save();
+        $check = Restaurant::where("name","=",$request->name)->get();
+        if($check != "[]"){
+            $status = "Restaurant Already Exists";
+            return $status;
+        }else{
+            $resto = new Restaurant;
+            $resto -> name = $request -> name;
+            $resto -> cuisine = $request -> cuisine;
+            $resto -> location = $request -> location;
+            $resto->save();
+            return response()->json([
+                "status" => "Success",
+            ], 200);
+        }
     }
 
     public function displayUsers(){
