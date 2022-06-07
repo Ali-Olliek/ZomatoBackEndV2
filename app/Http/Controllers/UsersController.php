@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Review;
 
 class UsersController extends Controller {
 
@@ -36,6 +37,20 @@ class UsersController extends Controller {
         return response()->json([
             "status"=>$status,
             "user"=>$user
+        ], 200);
+    }
+
+    public function updateProfile(Request $request){
+        // Will Solve Later
+    }
+
+    public function addReview(Request $request){
+        $review = new Review;
+        $review ->description = $request->description;
+        $review ->
+        $review->save();
+        return response()->json([
+            "status"=>"success",
         ], 200);
     }
 }
