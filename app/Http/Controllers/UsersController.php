@@ -23,19 +23,11 @@ class UsersController extends Controller {
     }
 
     public function signIn(Request $request){
-        $email = $request->email;
-        $password = $request->password;
-        $user = User::where([
-            ["email", "=", "$email"],
-            ["password", "=", "$password"]
-            ])->get();
-        if ($user != "[]"){
-            $status = "User Found";
-        }else{
-            die ("User Not Found!");
-        }
+        $user = User::where('email', '=', $request->email)->first();
+        $password = Hash::check('password', $user->password);
+        //https://stackoverflow.com/a/25136309/18590539
         return response()->json([
-            "status"=>$status,
+            "status"=>"success",
             "user"=>$user
         ], 200);
     }
