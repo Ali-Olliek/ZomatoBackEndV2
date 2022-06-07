@@ -47,7 +47,6 @@ class UsersController extends Controller {
     public function addReview(Request $request){
         $review = new Review;
         $review ->description = $request->description;
-        $review ->
         $review->save();
         return response()->json([
             "status"=>"success",

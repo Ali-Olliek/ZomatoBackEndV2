@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Models\review;
 
 class AdminsController extends Controller{
 
@@ -25,6 +26,10 @@ class AdminsController extends Controller{
     }
 
     public function monitorReviews(){
-
+        $review = Review::all();
+        return response()->json([
+            "status" => "Success",
+            "restos" => $review
+        ], 200);
     }
 }
