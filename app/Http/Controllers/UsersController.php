@@ -50,6 +50,7 @@ class UsersController extends Controller {
         $review = new Review;
         $review ->description = $request->description;
         $review->save();
+        
         return response()->json([
             "status"=>"success",
         ], 200);
@@ -57,9 +58,10 @@ class UsersController extends Controller {
 
     public function searchUsers($name){
         $user = User::where("name","LIKE",$name)->get();
+
         return response()->json([
-        "status" => "Success",
-        "User with name" => $user
+            "status" => "Success",
+            "User with name" => $user
     ], 200);
     }
 

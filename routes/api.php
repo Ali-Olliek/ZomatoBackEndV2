@@ -20,7 +20,6 @@ Route::POST("/AddReview", [UsersController::class, "addReview"])->name("Add-rev"
 Route::POST("/EditReview/{id}", [UsersController::class, "editReview"])->name("Edit-rev");
 Route::GET("/SearchUsers/{name}", [UsersController::class, "searchUsers"])->name("Search-user");
 
-
 // Admins Add Restaurant, Display Users, Monitor Reviews //
 
 Route::POST("/AddRestaurant", [AdminsController::class, "addResto"])->name("Add-resto");
@@ -32,4 +31,4 @@ Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name
 
 Route::GET("/AllRestaurants", [RestaurantsController::class, "displayAll"])->name("Display-all");
 Route::GET("/Restaurant/{name}", [RestaurantsController::class, "displayResto"])->name("Display-resto");
-Route::GET("/Restaurant/{category}", [RestaurantsController::class, "displayCat"])->name("Display-Cat");
+Route::GET("/RestaurantCat/{category}", [RestaurantsController::class, "displayCat"])->name("Display-Cat");

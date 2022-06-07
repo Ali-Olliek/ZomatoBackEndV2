@@ -17,19 +17,20 @@ class RestaurantsController extends Controller
 
 
     public function displayResto($name){
-    $resto = Restaurant::where("name", "LIKE", "%$name%")->get();
+        $resto = Restaurant::where("name", "LIKE", "%$name%")->get();
     
-    return response()->json([
-        "status" => "Success",
-        "Restaurant" => $resto
+        return response()->json([
+            "status" => "Success",
+            "Restaurant" => $resto
         ], 200);
     }
 
     public function displayCat($cuisine){
         $resto = Restaurant::where("cuisine","LIKE", "%$cuisine%")->get();
+        
         return response()->json([
-        "status" => "Success",
-        "Restaurant" => $resto
+            "status" => "Success",
+            "Restaurant" => $resto
         ], 200);
     }
 }
