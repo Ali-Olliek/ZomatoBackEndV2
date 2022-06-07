@@ -24,10 +24,17 @@ class UsersController extends Controller {
     public function signIn(Request $request){
         $email = $request->email;
         $password = $request->password;
-        echo $email, $password;
-
-        return response()->json([
+        $user = User::where([
+            ["email", "=", "$email"],
+            ["password", "=", "$password"]
+            ])->get();
+        if ($user != null){
+            return response()->json([
             "status"=>"success",
+            "user"=>$user
         ], 200);
+        }else{
+            echo ("User Not Found!");
+        }
     }
 }
