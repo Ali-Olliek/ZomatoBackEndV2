@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
 
 class RestaurantsController extends Controller
 {
@@ -10,7 +11,7 @@ class RestaurantsController extends Controller
         $restos = Restaurant::all();
         return response()->json([
             "status" => "Success",
-            "restos" => $restos
+            "Restaurants" => $restos
         ], 200);
     }
 
@@ -20,7 +21,7 @@ class RestaurantsController extends Controller
     
     return response()->json([
         "status" => "Success",
-        "results" => $resto
+        "Restaurant" => $resto
     ], 200);
 }
 }

@@ -16,6 +16,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::POST("/SignUp", [UsersController::class, "signUp"])->name("Sign-up");
 Route::POST("/SignIn", [UsersController::class, "signIn"])->name("Sign-in");
 Route::POST("/EditProfile", [UsersController::class, "editProfile"])->name("Edit-prof");
+Route::POST("/AddReview", [UsersController::class, "addReview"])->name("Add-rev");
+Route::POST("/EditReview", [UsersController::class, "editReview"])->name("Edit-rev");
+
 
 // Admins Add Restaurant, Display Users, Monitor Reviews //
 
@@ -26,4 +29,4 @@ Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name
 // Restaurants Display all, Display Single Restaurant //
 
 Route::GET("/AllRestaurants", [RestaurantsController::class, "displayAll"])->name("Display-all");
-Route::GET("/Restaurant", [RestaurantsController::class, "displayResto"])->name("Display-resto");
+Route::GET("/Restaurant/{name}", [RestaurantsController::class, "displayResto"])->name("Display-resto");
