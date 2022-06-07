@@ -32,3 +32,4 @@ Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name
 
 Route::GET("/AllRestaurants", [RestaurantsController::class, "displayAll"])->name("Display-all");
 Route::GET("/Restaurant/{name}", [RestaurantsController::class, "displayResto"])->name("Display-resto");
+Route::GET("/Restaurant/{category}", [RestaurantsController::class, "displayCat"])->name("Display-Cat");

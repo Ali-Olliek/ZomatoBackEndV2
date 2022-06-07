@@ -22,6 +22,14 @@ class RestaurantsController extends Controller
     return response()->json([
         "status" => "Success",
         "Restaurant" => $resto
-    ], 200);
-}
+        ], 200);
+    }
+
+    public function displayCat($cuisine){
+        $resto = Restaurant::where("cuisine","LIKE", "%$cuisine%")->get();
+        return response()->json([
+        "status" => "Success",
+        "Restaurant" => $resto
+        ], 200);
+    }
 }
