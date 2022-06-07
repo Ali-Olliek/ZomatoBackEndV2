@@ -40,8 +40,14 @@ class UsersController extends Controller {
         ], 200);
     }
 
-    public function updateProfile(Request $request){
-        // Will Solve Later
+    public function editProfile(Request $request, $id){
+        $user = User::find($id);
+        if($user){
+        $user -> name = $request ->new_name;
+        $user -> email = $request ->new_email;
+        $user -> password = Hash::make($request ->new_password);
+        $user->save();
+        }
     }
 
     public function addReview(Request $request){
@@ -51,5 +57,13 @@ class UsersController extends Controller {
         return response()->json([
             "status"=>"success",
         ], 200);
+    }
+
+    public function searchUsers($name){
+        $user = User::where("name","LIKE",$name)->get();
+        return response()->json([
+        "status" => "Success",
+        "User with name" => $user
+    ], 200);
     }
 }
