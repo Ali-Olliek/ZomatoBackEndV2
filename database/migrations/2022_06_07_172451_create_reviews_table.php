@@ -11,16 +11,16 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->index("user_id");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->index("resto_id");
-            $table->foreign('user_id')->references('id')->on('restaurants')->onDelete('cascade');
-            // https://stackoverflow.com/a/26437469/18590539
             $table->text('description');
+            $table ->bigInteger("reviews_user_id_foreign")->unsigned();
+            $table ->bigInteger("restaurant_id")->unsigned();
+            // https://stackoverflow.com/a/33633739/18590539
+            $table->foreign('reviews_user_id_foreign')->references('id')->on('users');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            // https://stackoverflow.com/a/26437469/18590539
             $table->timestamps();
         });
     }
