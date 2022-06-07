@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Review;
 
@@ -13,7 +13,7 @@ class UsersController extends Controller {
         $user = new User;
         $user ->name = $request ->name;
         $user ->email = $request->email;
-        $user ->password = $request ->password;
+        $user ->password = Hash::make($request ->password);
         $user ->user_type = $request->user_type_id;
         $user ->gender=$request->gender;
         $user -> save();
