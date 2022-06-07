@@ -15,9 +15,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::POST("/SignUp", [UsersController::class, "signUp"])->name("Sign-up");
 Route::POST("/SignIn", [UsersController::class, "signIn"])->name("Sign-in");
-Route::POST("/EditProfile", [UsersController::class, "editProfile"])->name("Edit-prof");
+Route::POST("/EditProfile/{id}", [UsersController::class, "editProfile"])->name("Edit-prof");
 Route::POST("/AddReview", [UsersController::class, "addReview"])->name("Add-rev");
-Route::POST("/EditReview", [UsersController::class, "editReview"])->name("Edit-rev");
+Route::POST("/EditReview/{id}", [UsersController::class, "editReview"])->name("Edit-rev");
+Route::GET("/SearchUsers/{name}", [UsersController::class, "searchUsers"])->name("Search-user");
 
 
 // Admins Add Restaurant, Display Users, Monitor Reviews //

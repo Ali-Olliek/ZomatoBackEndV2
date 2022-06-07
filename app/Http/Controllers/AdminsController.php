@@ -21,7 +21,7 @@ class AdminsController extends Controller{
         $users = User::all();
         return response()->json([
             "status" => "Success",
-            "restos" => $users
+            "All users" => $users
         ], 200);
     }
 
@@ -29,7 +29,7 @@ class AdminsController extends Controller{
         $review = Review::all();
         return response()->json([
             "status" => "Success",
-            "restos" => $review
+            "All reviews" => $review
         ], 200);
     }
 }
