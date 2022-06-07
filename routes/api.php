@@ -23,7 +23,8 @@ Route::GET("/SearchUsers/{name}", [UsersController::class, "searchUsers"])->name
 
 // Admins Add Restaurant, Display Users, Monitor Reviews //
 
-Route::POST("/AddResto", [AdminsController::class, "addResto"])->name("Add-resto");
+Route::POST("/AddRestaurant", [AdminsController::class, "addResto"])->name("Add-resto");
+Route::POST("/EditRestaurant/{id}", [AdminsController::class, "editResto"])->name("edit-resto");
 Route::GET("/DisplayUsers", [AdminsController::class, "displayUsers"])->name("Display-users");
 Route::GET("/MonitorReviews", [AdminsController::class, "monitorReviews"])->name("Monitor-reviews");
 

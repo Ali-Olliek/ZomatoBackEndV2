@@ -12,7 +12,7 @@ class AdminsController extends Controller{
     public function addResto(Request $request){
         $check = Restaurant::where("name","=",$request->name)->get();
         if($check != "[]"){
-            $status = "Restaurant Already Exists";
+            $status = "Failed";
             return $status;
         }else{
             $resto = new Restaurant;
@@ -40,5 +40,22 @@ class AdminsController extends Controller{
             "status" => "Success",
             "All reviews" => $review
         ], 200);
+    }
+
+    public function editResto(Request $request, $id){
+        $resto = Restaurant::find($id);
+        echo $resto;
+        if($resto){
+            $resto ->name = $request -> new_name;
+            $resto ->cuisine = $request -> new_cuisine;
+            $resto ->location = $request ->new_location;
+            $resto->save();
+            $status = "success";
+            return $status;
+        }
+        else{
+            $status = "Failed";
+            return $status;
+        }
     }
 }
