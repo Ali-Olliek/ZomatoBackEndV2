@@ -48,6 +48,10 @@ class UsersController extends Controller {
         $user -> password = Hash::make($request ->new_password);
         $user->save();
         }
+
+        return response()->json([
+            "status" => "success"
+        ]);
     }
 
     public function addReview(Request $request){
@@ -66,4 +70,15 @@ class UsersController extends Controller {
         "User with name" => $user
     ], 200);
     }
+
+    public function editReview(Request $request, $id){
+        $review = Review::find($id);
+        if($review){
+            $review -> description = $request ->new_description;
+            $review->save();
+        }
+        return response()->json([
+            "status" => "success"
+        ]);
+    }   
 }
