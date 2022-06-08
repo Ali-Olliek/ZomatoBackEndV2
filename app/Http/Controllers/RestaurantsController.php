@@ -33,4 +33,11 @@ class RestaurantsController extends Controller
             "Restaurant" => $resto
         ], 200);
     }
+
+    public function notFound(){
+        return response()->json([
+            "status"=>"success",
+            "User"=>"UnAuthorized"
+        ]);
+    }
 }
